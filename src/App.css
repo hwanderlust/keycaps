@@ -1,1 +1,15 @@
-.App {}
+:root {
+  --color__purple: #7B61FF;
+  --color__purple--dark: #5D5F71;
+  --color__purple--light: #DFE1F3;
+  --color__gold: #AD8A64;
+  --color__gray: #E5E5E5;
+  --color__black: #000000;
+  --color__white: #FFFFFF;
+  --color__red: #BF8B85;
+  --color__blue: #47A8BD;
+}
+
+.App {
+  color: var(--color__purple);
+}
