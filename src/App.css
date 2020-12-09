@@ -27,6 +27,7 @@ h1, h2, h3, h4, h5 {
   font-family: var(--font__primary);
   font-weight: 500;
   line-height: 1.3;
+  letter-spacing: -0.05rem;
 }
 
 /* 1.250 Major Third Scale type-scale.com */
@@ -37,7 +38,11 @@ h4 {font-size: 1.563rem;}
 h5 {font-size: 1.25rem;}
 small, .text_small {font-size: 0.8rem;}
 
-.App {
-  color: var(--color__purple);
-  font-family: var(--font__primary);
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li a {
+  text-decoration: none;
 }
