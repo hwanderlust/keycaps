@@ -85,7 +85,7 @@ function Logo() {
       <img
         className="footer__logo__img"
         src="./logo.png"
-        alt="Keycaps Inc logo featuring corporate colors in the form of boxes in the shape of the arrow keys on a keyboard" />
+        alt="Keycaps Inc logo featuring corporate colors in the form of boxes in the shape of the arrow keys on a keyboard created from FreeLogoDesign" />
     </div>
   );
 }

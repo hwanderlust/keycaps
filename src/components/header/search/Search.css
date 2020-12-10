@@ -1,0 +1,36 @@
+.header__search {
+  display: flex;
+  max-width: 600px;
+  height: 50px;
+  margin: 0 auto;
+  border: 1px solid var(--color__gray);
+  border-radius: 30px;
+}
+
+.header__search input {
+  width: 100%;
+  border: none;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.header__search button {
+  background-color: transparent;
+  padding: 0;
+  width: 50px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border: none;
+}
+.header__search button svg {
+  transform: translateX(-2px);
+}
+.search--active {
+  cursor: pointer;
+}
+.search--active path {
+  fill: var(--color__black);
+}
+.search--inactive path {
+  fill: var(--color__gray);
+}
