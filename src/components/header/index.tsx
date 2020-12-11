@@ -6,24 +6,33 @@ import "./Header.css";
 
 function Header() {
   const [showMenu, changeMenuVisibility] = React.useState(false);
+  const shoppingCart = React.useRef<HTMLButtonElement>(null);
 
-  function toggleMenu() {
-    changeMenuVisibility(prev => !prev);
-  }
+  const toggleMenu = React.useCallback(() => {
+    changeMenuVisibility(prev => {
+      if (prev === false) {
+        document.body.style.overflowY = "hidden";
+      } else {
+        document.body.style.overflowY = "auto";
+      }
+      return !prev;
+    });
+  }, []);
 
   return (
-    <>
-      <div className="header">
+    <div className="header">
+      <div className="header__top">
         <Logo />
         <NavHorizontal />
         <Buttons
+          shoppingCart={shoppingCart}
           showMenu={showMenu}
           toggleMenu={toggleMenu}
         />
       </div>
-      <SearchBar search={noOp} />
-      <Breadcrumbs history="keycaps/GMK-Amesthyst/" />
-    </>
+      <SearchBar search={noOp} />  {/* trigger data fetching / update store */}
+      <Breadcrumbs history="keycaps/GMK-Amesthyst/" /> {/* useHistory(), or something similar */}
+    </div>
   );
 }
 
@@ -52,7 +61,7 @@ interface NavigationProps {
 }
 function Navigation(props: NavigationProps) {
   return (
-    <nav className={`header__navigation ${props.classNames}`}>
+    <nav className={props.classNames}>
       <ul>
         <li><a href="/home">Home</a></li>
         <li><a href="/keyboards">Keyboards</a></li>
@@ -67,13 +76,14 @@ function Navigation(props: NavigationProps) {
 
 interface ButtonsProps {
   showMenu: boolean;
+  shoppingCart: React.MutableRefObject<HTMLButtonElement | null>;
   toggleMenu: () => void;
 }
 function Buttons(props: ButtonsProps) {
-  const { showMenu, toggleMenu } = props;
+  const { showMenu, shoppingCart, toggleMenu } = props;
 
   return (
-    <div className="header__buttons">
+    <menu>
       <button
         className="buttons__account"
         onClick={noOp}>
@@ -84,25 +94,25 @@ function Buttons(props: ButtonsProps) {
 
       <button
         className="buttons__cart"
+        ref={shoppingCart}
+        data-items={0}
         onClick={noOp}>
         <img
           src="./icon-cart.svg"
           alt="shopping cart icon provided by Jemis Mali via Unicorns on Figma's Community" />
       </button>
 
-      <div className="buttons__mobile">
-        {!showMenu && (
-          <button
-            className="mobile__hamburger"
-            onClick={toggleMenu}>
-            <img
-              src="./icon-menu.svg"
-              alt="hamburger menu icon provided by Jemis Mali via Unicorns on Figma's Community" />
-          </button>
-        )}
+      <button
+        className="mobile__hamburger"
+        onClick={toggleMenu}>
+        <img
+          src="./icon-menu.svg"
+          alt="hamburger menu icon provided by Jemis Mali via Unicorns on Figma's Community" />
+      </button>
 
-        {showMenu && (
-          <div className="mobile__menu">
+      {showMenu && (
+        <div className="modal--menu">
+          <dialog className="mobile__menu" open={showMenu}>
             <button
               className="buttons__account menu__account"
               onClick={noOp}>
@@ -110,6 +120,9 @@ function Buttons(props: ButtonsProps) {
                 src="./icon-account.svg"
                 alt="user icon provided by Jemis Mali via Unicorns on Figma's Community" />
             </button>
+
+            <NavVertical />
+
             <button
               className="menu__x"
               onClick={toggleMenu}>
@@ -117,12 +130,12 @@ function Buttons(props: ButtonsProps) {
                 src="./icon-close.svg"
                 alt="close/cancel icon provided by Jemis Mali via Unicorns on Figma's Community" />
             </button>
+          </dialog>
 
-            <NavVertical />
-          </div>
-        )}
-      </div>
-    </div>
+          <div className="menu__underlay" onClick={toggleMenu}></div>
+        </div>
+      )}
+    </menu>
   );
 }
 

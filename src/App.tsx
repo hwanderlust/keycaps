@@ -7,7 +7,7 @@ import './App.css';
 /**
  TODO:
  * Replace button in <Footer/> when common button API is created
- * Continue with building out <Breadcrumbs/>
+ * Connect store access via useContext API within <Header/> for shopping cart # of items
  * Default outline color to purple
  */
 

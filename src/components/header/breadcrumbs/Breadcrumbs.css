@@ -1,7 +1,9 @@
 .header__breadcrumbs {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   padding: 0 0 0 1rem;
+  margin: 1rem 0;
 }
 .breadcrumbs__home {
   width: 25px;

@@ -34,3 +34,13 @@
 .search--inactive path {
   fill: var(--color__gray);
 }
+
+@media only screen and (max-width: 767px) {
+  .header__search {
+    max-width: 95vw;
+  }
+  .header__search input {
+    padding: 0 0.5rem;
+    text-overflow: ellipsis;
+  }
+}
