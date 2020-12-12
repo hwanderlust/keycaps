@@ -27,45 +27,42 @@ function Select(props: SelectProps) {
   const [selectedOption, setSelectedOption] = React.useState<Option>(optionsArr[0]);
   const toggleDropdown = React.useCallback(() => {
     toggleOptions(prevStatus => !prevStatus);
-  }, [showOptions]);
+  }, []);
+  const closeDropdown = React.useCallback(() => {
+    toggleOptions(false);
+  }, []);
 
   return (
-    <>
-      <div
-        role="listbox"
-        className={`select--custom ${showOptions ? "select--open" : ""}`}
-        onClick={toggleDropdown}
-        tabIndex={0}>
+    <div
+      role="listbox"
+      className={`select--custom ${showOptions ? "select--open" : ""}`}
+      onClick={toggleDropdown}
+      onBlur={closeDropdown}
+      tabIndex={0}>
 
-        <div className="select__selected-container">
-          <span>{selectedOption.value}</span>
-          <img src="./icon-caret.svg" alt="" />
-        </div>
-
-        <menu>
-          {optionsArr
-            .map(option =>
-              <option
-                key={option.id}
-                value={option.id}
-                selected={selectedOption.id === option.id}
-                onClick={_ => {
-                  if (selectedOption.id !== option.id) {
-                    setSelectedOption(option);
-                    onSelect(option);
-                  }
-                }}>
-                {option.value}
-              </option>
-            )}
-        </menu>
+      <div className="select__selected-container">
+        <span>{selectedOption.value}</span>
+        <img src="./icon-caret.svg" alt="" />
       </div>
 
-      <div
-        className={`${showOptions ? "select__underlay" : ""}`}
-        onClick={toggleDropdown}>
-      </div>
-    </>
+      <menu>
+        {optionsArr
+          .map(option =>
+            <option
+              key={option.id}
+              value={option.id}
+              selected={selectedOption.id === option.id}
+              onClick={_ => {
+                if (selectedOption.id !== option.id) {
+                  setSelectedOption(option);
+                  onSelect(option);
+                }
+              }}>
+              {option.value}
+            </option>
+          )}
+      </menu>
+    </div>
   );
 }
 

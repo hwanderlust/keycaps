@@ -63,11 +63,3 @@
   background-color: var(--color__purple--dark);
   border-radius: 5px;
 }
-.select__underlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0;
-}
