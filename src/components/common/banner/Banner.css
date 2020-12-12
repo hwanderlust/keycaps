@@ -1,0 +1,29 @@
+.banner {
+  width: 100vw;
+  min-height: 350px;
+  background-color: var(--color__gold);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner .banner__headline {
+  text-align: center;
+  margin-top: 0;
+}
+
+.banner form {
+  display: flex;
+}
+
+.banner .banner__input {
+  text-align: center;
+  width: 350px;
+  border: none;
+  border-radius: 0;
+}
+
+.banner .banner__button {
+  margin: 0 0 0 auto;
+  width: 300px;
+}
