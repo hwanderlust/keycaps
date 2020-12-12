@@ -1,4 +1,4 @@
-import "./common.css";
+import "./Button.css";
 
 interface ButtonProps {
   text: string;

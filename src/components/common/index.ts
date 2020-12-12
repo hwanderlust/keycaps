@@ -1,5 +1,5 @@
-import Button from "./Button";
-import Select from "./Select";
+import Button from "./button";
+import Select from "./select";
 
 export {
   Button,
