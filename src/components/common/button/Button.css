@@ -30,7 +30,14 @@
   text-transform: uppercase;
   border: none;
 }
-.button--tertiary {
+.button--tertiary--black {
+  background-color: var(--color__black);
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  color: var(--color__white);
+}
+.button--tertiary--white {
   background-color: var(--color__white);
   text-transform: capitalize;
   border: 1px solid var(--color__black);

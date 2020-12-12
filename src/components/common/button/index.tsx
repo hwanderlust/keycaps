@@ -2,16 +2,19 @@ import "./Button.css";
 
 interface ButtonProps {
   text: string;
-  type: "primary" | "secondary" | "tertiary";
+  type: "primary" | "secondary" | "tertiary--black" | "tertiary--white";
+  onPress: () => void;
   iconSrc?: string;
   extraStylingClassNames?: string;
 }
 
 function Button(props: ButtonProps) {
-  const { text, type, iconSrc, extraStylingClassNames } = props;
+  const { text, type, onPress, iconSrc, extraStylingClassNames } = props;
 
   return (
-    <button className={`button button--${type} ${extraStylingClassNames || ""}`}>
+    <button
+      className={`button button--${type} ${extraStylingClassNames || ""}`}
+      onClick={onPress}>
       {text}
       {iconSrc && (
         <span>
