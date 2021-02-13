@@ -1,0 +1,35 @@
+.slides {
+  display: flex;
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+  max-height: 420px;
+  overflow: hidden;
+}
+
+.slides__img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.slides__button-pair {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.slide-button {
+  background-color: var(--color__purple--dark);
+  border: none;
+  border-radius: 0;
+  height: 50px;
+  width: 50px;
+}
+
+.slide-button--disabled {
+  filter: contrast(40%);
+}
+
+.slide__prev-btn {
+  transform: rotate(180deg);
+}
