@@ -21,17 +21,32 @@ interface Imgs {
 function Slides(props: SlidesProps) {
   const { imgs } = props;
   const [activeImgIndex, setActiveImgIndex] = React.useState<keyof Imgs>(0);
-  const lastIndex = Object.keys(imgs).length - 1;
+  const lastIndex = React.useRef<number>(Object.keys(imgs).length - 1);
+
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const slidesRef = React.useRef<HTMLDivElement>(null);
 
   function showNextImg() {
+    const width = containerRef.current?.getClientRects()[0].width;
+
+    slidesRef.current?.animate([
+      { transform: `translateX(-${(width || 0) * (activeImgIndex + 1)}px)` }
+    ], { duration: 250, fill: "forwards" });
+
     setActiveImgIndex(prev => {
-      if (prev === lastIndex) {
+      if (prev === lastIndex.current) {
         return prev;
       }
       return ++prev as keyof Imgs;
     })
   }
   function showPrevImg() {
+    const width = containerRef.current?.getClientRects()[0].width;
+
+    slidesRef.current?.animate([
+      { transform: `translateX(-${(width || 0) * (activeImgIndex - 1)}px)` }
+    ], { duration: 250, fill: "forwards" });
+
     setActiveImgIndex(prev => {
       if (prev <= 0) {
         return prev;
@@ -41,18 +56,23 @@ function Slides(props: SlidesProps) {
   }
 
   return (
-    <div className="slides">
-      <img
-        className="slides__img"
-        src={imgs[activeImgIndex]}
-        alt="" />
+    <div className="slides" ref={containerRef}>
+      <div className="slides__imgs" ref={slidesRef}>
+        {Object.values(imgs).map(imgSrc => (
+          <img
+            className="slides__img"
+            src={imgSrc}
+            alt={imgSrc}
+            key={imgSrc} />
+        ))}
+      </div>
       <div className="slides__button-pair">
         <SlideButton
           className="slide__prev-btn"
           disabled={activeImgIndex === 0}
           onPress={showPrevImg} />
         <SlideButton
-          disabled={activeImgIndex === lastIndex}
+          disabled={activeImgIndex === lastIndex.current}
           onPress={showNextImg} />
       </div>
     </div>
