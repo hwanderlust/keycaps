@@ -69,4 +69,69 @@ const PROFILES_LIST: Array<Profile> = [
   },
 ];
 
-export { PROFILES_LIST }
+const PROFILES = {
+  sa: {
+    name: "SA",
+    longName: "Spherical All",
+    height: 16.5,
+    imgSrc: "./profile-sa.svg",
+  },
+  taihao: {
+    name: "Tai Hao",
+    height: 14.8,
+    imgSrc: "./profile-taihao.svg",
+  },
+  kat: {
+    name: "KAT",
+    height: 13.5,
+    imgSrc: "./profile-kat.svg",
+  },
+  oem: {
+    name: "OEM",
+    height: 11.9,
+    imgSrc: "./profile-oem.svg",
+  },
+  cherry: {
+    name: "Cherry",
+    height: 9.4,
+    imgSrc: "./profile-cherry.svg",
+  },
+  xda: {
+    name: "XDA",
+    height: 9.1,
+    imgSrc: "./profile-xda.svg",
+  },
+  kam: {
+    name: "KAM",
+    height: 9.1,
+    imgSrc: "./profile-kam.svg",
+  },
+  dsa: {
+    name: "DSA",
+    height: 7.6,
+    imgSrc: "./profile-dsa.svg",
+  },
+  g20: {
+    name: "G20",
+    height: 7.1,
+    imgSrc: "./profile-g20.svg",
+  },
+  tea: {
+    name: "TEA",
+    height: 3.8,
+    imgSrc: "./profile-tea.svg",
+  },
+  mbk: {
+    name: "MBK",
+    height: 3.2,
+    imgSrc: "./profile-mbk.svg",
+  },
+  apple: {
+    name: "Apple",
+    longName: "Apple Magic Keyboard",
+    height: 2.3,
+    imgSrc: "./profile-apple.svg",
+  },
+}
+
+export { PROFILES_LIST, PROFILES }
