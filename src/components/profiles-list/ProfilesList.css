@@ -1,0 +1,36 @@
+.profiles-list {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 0.5rem;
+}
+
+.profile {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 8ch 1rem 8ch;
+  grid-template-areas: 
+    "pf-height pf-space pf-name"
+    "pf-img pf-img pf-img";
+}
+
+.profile__height {
+  grid-area: pf-height;
+}
+
+.profile__img {
+  grid-area: pf-img;
+}
+
+.profile__name {
+  grid-area: pf-name;
+}
+
+@media only screen and (min-width: 450px) {
+  .profile {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 12ch 350px 8ch;
+    grid-template-areas: 
+      "pf-height pf-img pf-name";
+  }
+}
